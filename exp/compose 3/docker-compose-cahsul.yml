@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  
+  nginx_:
+    image: nginx
+    restart: always
+    ports:
+      - '80:80' 
+    volumes:
+      - /home/cahsul/docker_file/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+  
+  gitlab_:
+    image: gitlab/gitlab-ce:latest
+    restart: always
+    ports: 
+      - '9143:443'
+      - '9100:80'
+      - '9122:22'
+    volumes: 
+      - /home/cahsul/docker_file/gitlab/config:/etc/gitlab
+      - /home/cahsul/docker_file/gitlab/logs:/var/log/gitlab
+      - /home/cahsul/docker_file/gitlab/data:/var/opt/gitlab

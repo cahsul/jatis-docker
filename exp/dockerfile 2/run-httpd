@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+
+# Apache gets grumpy about PID files pre-existing
+
+httpd -D FOREGROUND
